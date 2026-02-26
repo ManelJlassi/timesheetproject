@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.services.IUserService;
 
+import tn.esprit.spring.dto.UserDTO;
+
 // userRestControl
 @RestController // = @Controller + @ResponseBody 
 @RequestMapping("/user")
@@ -34,11 +36,14 @@ public class UserRestControl {
 	 
 
 	// Ajouter User : http://localhost:????/timesheet-devops/add-user 
-	@PostMapping("/add-user")
-	public User addUser(@RequestBody User u) {
-		User user = userService.addUser(u); 
-		return user;
-	}
+	@PostMapping("/addUser")
+public void addUser(@RequestBody UserDTO userDto) {
+    User user = new User();
+    user.setFirstName(userDto.getFirstName());
+    user.setLastName(userDto.getLastName());
+    user.setEmail(userDto.getEmail());
+    userService.addUser(user);
+}
 
 	
 	// Supprimer User : 
