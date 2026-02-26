@@ -17,9 +17,9 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=admin -Dsonar.password=Sonar@123456'
-            }
-        }
+    steps {
+        sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.token=sqa_addd33599cb3b32e39db58b6c875022fd2db7fbc'
+    }
+}
     }
 }
